@@ -1,0 +1,39 @@
+.card_name {
+    font-size: 1.4rem;
+}
+
+.card_description {
+    font-size: 1.0rem;
+    max-width: 15vw;
+}
+
+.card_stats {
+    font-size: 1.0rem;
+}
+
+.cardBox {
+    display:flex;
+    flex-direction: column;
+    align-items: left;
+    width: 15vw;
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.att_def {
+    display:flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.attr_type {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.level_kind {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}

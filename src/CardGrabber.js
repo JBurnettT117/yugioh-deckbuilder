@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './CardGrabber.css';
 
 const CardList = (props) => {
 
@@ -27,10 +28,22 @@ const CardList = (props) => {
         if(card.type.includes(props.selectedCardType) || props.selectedCardType === "all"){
             return (
                 <div className='cardBox'>
-                    <h2>{card.name}</h2>
-                    <h4>{card.desc}</h4>
-                    {card.atk && <p>atk: {card.atk}</p>}
-                    {card.def && <p>def: {card.def}</p>}
+                    <h2 className='card_name'>{card.name}</h2>
+                    <div className='level_kind'>
+                        {card.level && <p className='card_stats'>Level: {card.level}</p>}
+                        {card.type.endsWith("Monster") && <p className='card_stats'>{card.type}</p>}
+                        {card.type === "Spell Card" && <p className='card_stats'>{card.race} {card.type}</p>}
+                        {card.type === "Trap Card" && <p className='card_stats'>{card.race} {card.type}</p>}
+                    </div>
+                    <div className='attr_type'>
+                        {card.attribute && <p className='card_stats'>Attribute: {card.attribute}</p>}
+                        {card.type.endsWith("Monster") && <p className='card_stats'>Type: {card.race}</p>}
+                    </div>
+                    <div className='att_def'>
+                        {card.atk && <p className='card_stats'>ATK: {card.atk}</p>}
+                        {card.def && <p className='card_stats'>DEF: {card.def}</p>}
+                    </div>
+                    <p className='card_description'>{card.desc}</p>
                 </div>
             );
         }
