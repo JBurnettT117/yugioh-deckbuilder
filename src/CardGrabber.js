@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import picture from './test data/Yugioh test card.jpg'
 
 const CardList = (props) => {
 
@@ -27,6 +28,7 @@ const CardList = (props) => {
         if(card.type.includes(props.selectedCardType) || props.selectedCardType === "all"){
             return (
                 <div className='cardBox'>
+                    <img src={picture} alt='picture of card'/>
                     <h2>{card.name}</h2>
                     <h4>{card.desc}</h4>
                     {card.atk && <p>atk: {card.atk}</p>}
