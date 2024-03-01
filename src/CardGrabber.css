@@ -4,36 +4,49 @@
 
 .card_description {
     font-size: 1.0rem;
-    max-width: 15vw;
+    width: 12vw;
 }
 
 .card_stats {
     font-size: 1.0rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .cardBox {
     display:flex;
-    flex-direction: column;
-    align-items: left;
-    width: 15vw;
+    flex-direction: row;
+    width: 20vw;
     border: 1px solid white;
     padding: 10px;
+    text-align: left;
 }
 
 .att_def {
     display:flex;
-    width: 100%;
-    justify-content: space-around;
+    text-align: left;
+}
+
+.stat:nth-child(1) {
+    flex: 1 0 50%;
+}
+
+.stat:nth-child(2) {
+    flex: 0 1 50%;
 }
 
 .attr_type {
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
 }
 
 .level_kind {
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
+}
+
+.card_image {
+    width: 7vw;
+    height: 100%;
+    padding-right: 20px;
 }

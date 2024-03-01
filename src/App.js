@@ -17,14 +17,20 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <label htmlFor='Card Type'>Select Card Type: </label>
-        <select id="cardtype" name="cardtype" defaultValue={selectedCardType} onChange={handleChange}>
-          <option value="all"></option>
-          <option value="Monster">Monster</option>
-          <option value="Spell">Spell</option>
-          <option value="Trap">Trap</option>
-        </select>
-        <CardList {...props}/>
+        <div className='container'>
+          <div className='filters'>
+            <label htmlFor='Card Type'>Select Card Type: </label>
+            <select id="cardtype" name="cardtype" defaultValue={selectedCardType} onChange={handleChange}>
+              <option value="all"></option>
+              <option value="Monster">Monster</option>
+              <option value="Spell">Spell</option>
+              <option value="Trap">Trap</option>
+            </select>
+          </div>
+          <div className='card_list'>
+            <CardList {...props}/>
+          </div>
+        </div>        
       </header>
     </div>
   );
