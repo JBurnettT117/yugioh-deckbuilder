@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CardGrabber.css';
-import picture from './test data/Yugioh test card.jpg'
+import image from './test data/Yugioh test card.jpg';
 
 const CardList = (props) => {
 
@@ -14,7 +14,7 @@ const CardList = (props) => {
         axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=2000-01-01&enddate=${currentBanList}&dateregion=tcg`)
         .then(response => {
             // console.log('this is the console.log', response.data.data)
-            
+            // let initialList = response.data.data
             setCards([...response.data.data])
         })
         .catch(error => {
@@ -25,11 +25,25 @@ const CardList = (props) => {
     console.log(props)
     console.log(cards)
 
+    // let modulePath = "./images"
+    // let cardImg
+
     return cards.map(card => {
-        if(card.type.includes(props.selectedCardType) || props.selectedCardType === "all"){
+        // import(`./images/${card.id}.jpg`)
+        //     .then((module) => {
+        //         cardImg = module;
+        //         return cardImg
+        //     })
+        //     .catch((err) => {
+        //         console.error(err)
+        //     })
+        if((card.type.includes(props.selectedCardType) || props.selectedCardType === "all") && 
+        (card.attribute === props.selectedAttribute || props.selectedAttribute === "all" || !card.attribute || props.selectedCardType !== "Monster") &&
+        (card.name.toLowerCase().includes(props.cardName.toLowerCase()) || props.cardName === "")
+        ){
             return (
                 <div className='cardBox'>
-                    <img className='card_image' src={picture} alt='picture of card'/>
+                    <img className='card_image' src={image} alt='picture of card'/>
                     <div>
                         <h2 className='card_name'>{card.name}</h2>
                         <div className='level_kind'>
