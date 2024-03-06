@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CardGrabber.css';
-import image from './test data/Yugioh test card.jpg';
+import yugiohTestCard from './testData/yugiohTestCard.jpg'
 
 const CardList = (props) => {
 
@@ -37,13 +37,14 @@ const CardList = (props) => {
         //     .catch((err) => {
         //         console.error(err)
         //     })
-        if((card.type.includes(props.selectedCardType) || props.selectedCardType === "all") && 
+        if((card.name.toLowerCase().includes(props.cardName.toLowerCase()) || props.cardName === "") &&
+        (card.type.includes(props.selectedCardType) || props.selectedCardType === "all") && 
         (card.attribute === props.selectedAttribute || props.selectedAttribute === "all" || !card.attribute || props.selectedCardType !== "Monster") &&
-        (card.name.toLowerCase().includes(props.cardName.toLowerCase()) || props.cardName === "")
+        (card.race === props.monsterType || props.monsterType === 'all' || !card.race || props.selectedCardType !== "Monster")
         ){
             return (
                 <div className='cardBox'>
-                    <img className='card_image' src={image} alt='picture of card'/>
+                    <img className='card_image' src={require(`./images/${card.id}.jpg`)} alt='picture of card'/>
                     <div>
                         <h2 className='card_name'>{card.name}</h2>
                         <div className='level_kind'>
