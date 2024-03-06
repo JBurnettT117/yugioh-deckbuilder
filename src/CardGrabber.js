@@ -27,9 +27,11 @@ const CardList = (props) => {
 
     return cards.map(card => {
         if((card.name.toLowerCase().includes(props.cardName.toLowerCase()) || props.cardName === "") &&
+        (card.desc.toLowerCase().includes(props.cardDescription.toLowerCase()) || props.cardDescription === "") &&
         (card.type.includes(props.selectedCardType) || props.selectedCardType === "all") && 
         (card.attribute === props.selectedAttribute || props.selectedAttribute === "all" || !card.attribute || props.selectedCardType !== "Monster") &&
-        (card.race === props.monsterType || props.monsterType === 'all' || !card.race || props.selectedCardType !== "Monster")
+        (card.race === props.monsterType || props.monsterType === "all" || !card.race || props.selectedCardType !== "Monster") &&
+        (card.level === Number(props.cardLevel) || props.cardLevel === "all" || !card.level || props.selectedCardType !== "Monster")
         ){
             return (
                 <div className='cardBox'>
