@@ -25,18 +25,7 @@ const CardList = (props) => {
     console.log(props)
     console.log(cards)
 
-    // let modulePath = "./images"
-    // let cardImg
-
     return cards.map(card => {
-        // import(`./images/${card.id}.jpg`)
-        //     .then((module) => {
-        //         cardImg = module;
-        //         return cardImg
-        //     })
-        //     .catch((err) => {
-        //         console.error(err)
-        //     })
         if((card.name.toLowerCase().includes(props.cardName.toLowerCase()) || props.cardName === "") &&
         (card.type.includes(props.selectedCardType) || props.selectedCardType === "all") && 
         (card.attribute === props.selectedAttribute || props.selectedAttribute === "all" || !card.attribute || props.selectedCardType !== "Monster") &&
