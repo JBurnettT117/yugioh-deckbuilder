@@ -10,6 +10,7 @@ function App() {
   const [selectedCardType, setSelectedCardType] = useState("all");
   const [selectedAttribute, setSelectedAttribute] = useState("all");
   const [monsterType, setMonsterType] = useState("all");
+  const [monsterCardType, setMonsterCardType] = useState("all");
   const [spellType, setSpellType] = useState("all");
   const [trapType, setTrapType] = useState("all");
 
@@ -26,6 +27,8 @@ function App() {
       setMonsterType(event.target.value);
     } else if(event.target.id === 'cardlevel'){
       setCardLevel(event.target.value);
+    } else if(event.target.id === 'monstercardtype'){
+      setMonsterCardType(event.target.value)
     } else if(event.target.id === 'spelltype'){
       setSpellType(event.target.value);
     } else if(event.target.id === 'traptype'){
@@ -33,7 +36,7 @@ function App() {
     }
   }
 
-  const props = {cardName, cardDescription, selectedCardType, selectedAttribute, monsterType, cardLevel, spellType, trapType}
+  const props = {cardName, cardDescription, selectedCardType, selectedAttribute, monsterType, cardLevel, monsterCardType, spellType, trapType}
 
   return (
     <div className="App">
@@ -117,6 +120,38 @@ function App() {
                 <option value={10}>10</option>
                 <option value={11}>11</option>
                 <option value={12}>12</option>
+              </select>
+            </>
+            }
+            {selectedCardType === "Monster" &&
+            <>
+              <label htmlFor='Monster Type'>Select Type of Monster: </label>
+              <select id="monstercardtype" name="monstercardtype" defaultValue={monsterCardType} onChange={handleChange}>
+                <option value="all"></option>
+                <option value="Effect Monster">Effect</option>
+                <option value="Flip Effect Monster">Flip Effect</option>
+                <option value="Fusion Monster">Fusion</option>
+                <option value="Gemini Monster">Gemini</option>
+                {/* <option value="Link">Link</option> */}
+                <option value="Normal Monster">Normal</option>
+                {/* <option value="Normal Tuner">Normal Tuner</option>
+                <option value="Pendulum Effect Fusion">Pendulum Effect Fusion</option>
+                <option value="Pendulum Effect">Pendulum Effect</option>
+                <option value="Pendulum Effect Ritual">Pendulum Effect Ritual</option>
+                <option value="Pendulum Flip Effect">Pendulum Flip Effect</option>
+                <option value="Pendulum Normal">Pendulum Normal</option> */}
+                {/* <option value="Pendulum Tuner Effect">Pendulum Tuner Effect</option> */}
+                <option value="Ritual Monster">Ritual</option>
+                <option value="Ritual Effect Monster">Ritual Effect</option>
+                <option value="Spirit Monster">Spirit</option>
+                {/* <option value="Synchro">Synchro</option> */}
+                {/* <option value="Synchro Pendulum Effect">Synchro Pendulum Effect</option> */}
+                {/* <option value="Synchro Tuner">Synchro Tuner</option> */}
+                <option value="Toon Monster">Toon</option>
+                {/* <option value="Tuner">Tuner</option> */}
+                <option value="Union Effect Monster">Union Effect</option>
+                {/* <option value="XYZ">XYZ</option> */}
+                {/* <option value="XYZ Pendulum Effect">XYZ Pendulum Effect</option> */}
               </select>
             </>
             }

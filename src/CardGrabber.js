@@ -13,7 +13,6 @@ const CardList = (props) => {
     useEffect(() => {
         axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=2000-01-01&enddate=${currentBanList}&dateregion=tcg`)
         .then(response => {
-            // console.log('this is the console.log', response.data.data)
             // let initialList = response.data.data
             setCards([...response.data.data])
         })
@@ -32,6 +31,7 @@ const CardList = (props) => {
         (card.attribute === props.selectedAttribute || props.selectedAttribute === "all" || !card.attribute || props.selectedCardType !== "Monster") &&
         (card.race === props.monsterType || props.monsterType === "all" || !card.race || props.selectedCardType !== "Monster") &&
         (card.level === Number(props.cardLevel) || props.cardLevel === "all" || !card.level || props.selectedCardType !== "Monster") &&
+        (card.type === props.monsterCardType || props.monsterCardType === "all" ) && 
         (card.race === props.spellType || props.spellType === "all"  || props.selectedCardType !== "Spell") &&
         (card.race === props.trapType || props.trapType === "all"  || props.selectedCardType !== "Trap")
         ){
@@ -64,10 +64,6 @@ const CardList = (props) => {
 }
 
 export default CardList
-
-//props must contain all sorting functions. then pass props here and prepare the list.
-
-//pictures total size would be 1.6 gigs for all modern cards not including alternative card arts
 
 //Normal monsters atk highest to lowest
 //effect monsters same
