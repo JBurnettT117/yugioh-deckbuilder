@@ -31,7 +31,9 @@ const CardList = (props) => {
         (card.type.includes(props.selectedCardType) || props.selectedCardType === "all") && 
         (card.attribute === props.selectedAttribute || props.selectedAttribute === "all" || !card.attribute || props.selectedCardType !== "Monster") &&
         (card.race === props.monsterType || props.monsterType === "all" || !card.race || props.selectedCardType !== "Monster") &&
-        (card.level === Number(props.cardLevel) || props.cardLevel === "all" || !card.level || props.selectedCardType !== "Monster")
+        (card.level === Number(props.cardLevel) || props.cardLevel === "all" || !card.level || props.selectedCardType !== "Monster") &&
+        (card.race === props.spellType || props.spellType === "all"  || props.selectedCardType !== "Spell") &&
+        (card.race === props.trapType || props.trapType === "all"  || props.selectedCardType !== "Trap")
         ){
             return (
                 <div className='cardBox'>

@@ -1,14 +1,17 @@
 import './App.css';
 import CardList from './CardGrabber';
 import { useState } from 'react';
+
 function App() {
 
   const [cardName, setCardName] = useState("");
-  const [cardLevel, setCardLevel] = useState("");
+  const [cardLevel, setCardLevel] = useState("all");
   const [cardDescription, setCardDescription] = useState("");
   const [selectedCardType, setSelectedCardType] = useState("all");
   const [selectedAttribute, setSelectedAttribute] = useState("all");
   const [monsterType, setMonsterType] = useState("all");
+  const [spellType, setSpellType] = useState("all");
+  const [trapType, setTrapType] = useState("all");
 
   const handleChange = (event) => {
     if(event.target.id === 'cardname'){
@@ -23,10 +26,14 @@ function App() {
       setMonsterType(event.target.value);
     } else if(event.target.id === 'cardlevel'){
       setCardLevel(event.target.value);
+    } else if(event.target.id === 'spelltype'){
+      setSpellType(event.target.value);
+    } else if(event.target.id === 'traptype'){
+      setTrapType(event.target.value);
     }
   }
 
-  const props = {cardName, cardDescription, selectedCardType, selectedAttribute, monsterType, cardLevel}
+  const props = {cardName, cardDescription, selectedCardType, selectedAttribute, monsterType, cardLevel, spellType, trapType}
 
   return (
     <div className="App">
@@ -110,6 +117,31 @@ function App() {
                 <option value={10}>10</option>
                 <option value={11}>11</option>
                 <option value={12}>12</option>
+              </select>
+            </>
+            }
+            {selectedCardType === "Spell" &&
+            <>
+              <label htmlFor='Spell Type'>Select Spell Type: </label>
+              <select id="spelltype" name="spelltype" defaultValue={spellType} onChange={handleChange}>
+                <option value="all"></option>
+                <option value="Normal">Normal</option>
+                <option value="Continuous">Continuous</option>
+                <option value="Equip">Equip</option>
+                <option value="Quick-Play">Quick-Play</option>
+                <option value="Field">Field</option>
+                <option value="Ritual">Ritual</option>
+              </select>
+            </>
+            }
+            {selectedCardType === "Trap" &&
+            <>
+              <label htmlFor='Trap Type'>Select Spell Type: </label>
+              <select id="traptype" name="traptype" defaultValue={trapType} onChange={handleChange}>
+                <option value="all"></option>
+                <option value="Normal">Normal</option>
+                <option value="Continuous">Continuous</option>
+                <option value="Counter">Counter</option>
               </select>
             </>
             }
