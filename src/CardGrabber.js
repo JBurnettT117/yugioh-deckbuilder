@@ -5,7 +5,8 @@ import yugiohTestCard from './testData/yugiohTestCard.jpg'
 
 const CardList = (props) => {
 
-    
+    //make arranges lsit then set as new card object in a group and pass to cards.map
+
     const [cards, setCards] = useState([])
 
     const currentBanList = '2005-10-01';
@@ -13,8 +14,37 @@ const CardList = (props) => {
     useEffect(() => {
         axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=2000-01-01&enddate=${currentBanList}&dateregion=tcg`)
         .then(response => {
-            // let initialList = response.data.data
-            setCards([...response.data.data])
+            let initialList = response.data.data
+            let normalMonsters = [];
+            let effectMonsters = [];
+            let ritualMonsters = [];
+            let fusionMonsters = [];
+            let spellCards = [];
+            let trapCards = [];
+            initialList.map((card) => {
+                if(card.frameType === "normal"){
+                    normalMonsters.push(card);
+                } else if(card.frameType === "effect"){
+                    effectMonsters.push(card);
+                } else if(card.frameType === "ritual"){
+                    ritualMonsters.push(card);
+                } else if(card.frameType === "fusion"){
+                    fusionMonsters.push(card);
+                } else if(card.frameType === "spell"){
+                    spellCards.push(card);
+                } else if(card.frameType === "trap"){
+                    trapCards.push(card);
+                }
+            })
+            normalMonsters.sort(function(a, b){return b.atk - a.atk});
+            effectMonsters.sort(function(a, b){return b.atk - a.atk});
+            ritualMonsters.sort(function(a, b){return b.atk - a.atk});
+            fusionMonsters.sort(function(a, b){return b.atk - a.atk});
+            // spellCards.sort(function(a, b){return b.race[0] - a.race[0]}); These dont work 
+            // trapCards.sort(function(a, b){return b.race[0] - a.race[0]});
+            const finalList = [...normalMonsters, ...effectMonsters, ...ritualMonsters, ...fusionMonsters, ...spellCards, ...trapCards]
+            // console.log(finalList)
+            setCards([...finalList])
         })
         .catch(error => {
             console.error(error);
