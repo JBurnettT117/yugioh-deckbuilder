@@ -9,7 +9,7 @@ const CardList = (props) => {
 
     const [cards, setCards] = useState([])
 
-    const currentBanList = '2005-10-01';
+    const currentBanList = '2006-04-01';
     
     useEffect(() => {
         axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=2000-01-01&enddate=${currentBanList}&dateregion=tcg`)
