@@ -9,11 +9,12 @@ const CardList = (props) => {
 
     const [cards, setCards] = useState([])
 
-    const currentBanList = '2006-04-01';
+    const currentBanList = '2006-09-01';
     
     useEffect(() => {
         axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=2000-01-01&enddate=${currentBanList}&dateregion=tcg`)
         .then(response => {
+            console.log(response)
             let initialList = response.data.data
             let normalMonsters = [];
             let effectMonsters = [];
@@ -51,8 +52,8 @@ const CardList = (props) => {
         });
     }, []);
 
-    console.log(props)
-    console.log(cards)
+    // console.log(props)
+    // console.log(cards)
 
     return cards.map(card => {
         if((card.name.toLowerCase().includes(props.cardName.toLowerCase()) || props.cardName === "") &&
