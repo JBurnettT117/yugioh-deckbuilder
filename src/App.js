@@ -13,6 +13,8 @@ function App() {
   const [monsterCardType, setMonsterCardType] = useState("all");
   const [spellType, setSpellType] = useState("all");
   const [trapType, setTrapType] = useState("all");
+  const [sortType, setSortType] = useState("Default");
+  const [sortDirection, setSortDirection] = useState("Descending");
 
   const handleChange = (event) => {
     if(event.target.id === 'cardname'){
@@ -33,10 +35,26 @@ function App() {
       setSpellType(event.target.value);
     } else if(event.target.id === 'traptype'){
       setTrapType(event.target.value);
+    } else if(event.target.id === 'sorttype'){
+      setSortType(event.target.value);
+    } else if(event.target.id === 'sortdirection'){
+      setSortDirection(event.target.value);
     }
   }
 
-  const props = {cardName, cardDescription, selectedCardType, selectedAttribute, monsterType, cardLevel, monsterCardType, spellType, trapType}
+  const props = {
+    cardName, 
+    cardDescription, 
+    selectedCardType, 
+    selectedAttribute, 
+    monsterType, 
+    cardLevel,
+    monsterCardType, 
+    spellType, 
+    trapType, 
+    sortType, 
+    sortDirection
+  }
 
   return (
     <div className="App">
@@ -181,8 +199,20 @@ function App() {
             </>
             }
           </div>
-          <div className='card_list'>
-            <CardList {...props}/>
+          <div className='card_list_container'>
+            <label htmlFor='Sort Type'>Sort By: </label>
+            <select id="sorttype" name="sorttype" defaultValue={sortType} onChange={handleChange}>
+              <option value="Default">Default</option>
+              <option value="Attack">Attack</option>
+              <option value="Defense">Defense</option>
+            </select>
+            <select id='sortdirection' name='sortdirection' defaultValue={sortDirection} onChange={handleChange}>
+              <option value="Descending">Descending</option>
+              <option value="Ascending">Ascending</option>
+            </select>
+            <div className='card_list'>
+              <CardList {...props}/>
+            </div>
           </div>
         </div>        
       </header>

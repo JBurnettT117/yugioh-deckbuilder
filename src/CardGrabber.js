@@ -7,7 +7,8 @@ const CardList = (props) => {
 
     //make arranges lsit then set as new card object in a group and pass to cards.map
 
-    const [cards, setCards] = useState([])
+    const [cards, setCards] = useState([]);
+    const [filteredList, setFilteredList] = useState([]);
 
     const currentBanList = '2007-03-01';
     
@@ -46,16 +47,35 @@ const CardList = (props) => {
             const finalList = [...normalMonsters, ...effectMonsters, ...ritualMonsters, ...fusionMonsters, ...spellCards, ...trapCards]
             // console.log(finalList)
             setCards([...finalList])
+            setFilteredList([...finalList])
         })
         .catch(error => {
             console.error(error);
         });
-    }, []);
+    }, ['']);
 
     // console.log(props)
     // console.log(cards)
 
-    return cards.map(card => {
+    let test = []; // this kind of works but swapping back to default isnt perfect and ascending and descending needs tweaking
+
+    const sortCards = () => {
+        if(props.sortType === 'Default'){
+            test = [...filteredList];
+            return
+        } else if(props.sortType === 'Attack'){
+            test = cards.sort(function(a, b){return b.atk - a.atk});
+        } else if(props.sortType === 'Defense'){
+            test = cards.sort(function(a, b){return b.def - a.def});
+        }
+        if(props.sortDirection === 'Ascending'){
+            test = test.reverse()
+        }
+    }
+
+    sortCards();
+
+    return test.map(card => {
         if((card.name.toLowerCase().includes(props.cardName.toLowerCase()) || props.cardName === "") &&
         (card.desc.toLowerCase().includes(props.cardDescription.toLowerCase()) || props.cardDescription === "") &&
         (card.type.includes(props.selectedCardType) || props.selectedCardType === "all") && 
