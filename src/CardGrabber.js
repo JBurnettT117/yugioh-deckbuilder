@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CardGrabber.css';
-import yugiohTestCard from './testData/yugiohTestCard.jpg'
 
 const CardList = (props) => {
 
@@ -23,7 +22,7 @@ const CardList = (props) => {
             let fusionMonsters = [];
             let spellCards = [];
             let trapCards = [];
-            initialList.map((card) => {
+            initialList.forEach((card) => {
                 if(card.frameType === "normal"){
                     normalMonsters.push(card);
                 } else if(card.frameType === "effect"){
@@ -52,7 +51,7 @@ const CardList = (props) => {
         .catch(error => {
             console.error(error);
         });
-    }, ['']);
+    }, []);
 
     // console.log(props)
     // console.log(cards)
@@ -88,7 +87,7 @@ const CardList = (props) => {
         ){
             return (
                 <div className='cardBox'>
-                    <img className='card_image' src={require(`./images/${card.id}.jpg`)} alt='picture of card'/>
+                    <img className='card_image' src={require(`./images/${card.id}.jpg`)} alt={card.name}/>
                     <div>
                         <h2 className='card_name'>{card.name}</h2>
                         <div className='level_kind'>
@@ -110,6 +109,7 @@ const CardList = (props) => {
                 </div>
             );
         }
+        return null;
     })
 
 }
