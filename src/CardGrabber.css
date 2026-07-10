@@ -4,7 +4,7 @@
 
 .card_description {
     font-size: 1.0rem;
-    max-width: 100%;
+    width: 12vw;
 }
 
 .card_stats {
@@ -16,9 +16,7 @@
 .cardBox {
     display:flex;
     flex-direction: row;
-    width: 100%;
-    max-width: 320px;
-    box-sizing: border-box;
+    width: 20vw;
     border: 1px solid white;
     padding: 10px;
     text-align: left;
@@ -48,8 +46,7 @@
 }
 
 .card_image {
-    width: 80px;
-    flex-shrink: 0;
-    height: auto;
+    width: 7vw;
+    height: 100%;
     padding-right: 20px;
 }

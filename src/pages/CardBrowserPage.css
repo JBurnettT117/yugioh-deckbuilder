@@ -31,11 +31,19 @@
     text-align: left;
 }
 
+.browser_sidebar .filters {
+    width: 100%;
+    min-width: 0;
+}
+
+.browser_sidebar .filters label,
 .browser_sidebar label {
     font-size: 0.85rem;
     text-align: left;
 }
 
+.browser_sidebar .filters input,
+.browser_sidebar .filters select,
 .browser_sidebar select {
     width: 100%;
     box-sizing: border-box;
