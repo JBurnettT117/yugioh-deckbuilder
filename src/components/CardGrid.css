@@ -1,0 +1,75 @@
+.card_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    width: 100%;
+    align-content: start;
+}
+
+.grid_card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.grid_card_image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.grid_card_info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.grid_card_name {
+    font-size: 1.1rem;
+    margin: 0 0 6px 0;
+}
+
+.grid_card_stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.grid_stat {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border: 1px solid #61dafb;
+    border-radius: 10px;
+    color: #61dafb;
+    white-space: nowrap;
+}
+
+/* Keeps ATK and DEF together as a single unit so they wrap onto a new
+   line as a pair rather than being split across two lines. */
+.grid_stat_group {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+}
+
+.grid_card_desc {
+    font-size: 0.8rem;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.card_grid_status {
+    font-size: 1.2rem;
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+}

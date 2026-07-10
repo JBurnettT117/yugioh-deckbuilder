@@ -1,0 +1,52 @@
+.browser_container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.browser_sidebar {
+    flex: 0 0 260px;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    box-sizing: border-box;
+    border-right: 1px solid #3a3f4b;
+    min-width: 0;
+}
+
+.browser_sidebar_title {
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    text-align: left;
+}
+
+.browser_sidebar label {
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.browser_sidebar select {
+    width: 100%;
+    box-sizing: border-box;
+    height: 2rem;
+    font-size: 0.9rem;
+}
+
+.browser_main {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 16px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
